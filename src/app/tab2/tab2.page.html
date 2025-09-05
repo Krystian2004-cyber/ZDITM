@@ -25,70 +25,80 @@
             <ion-title size="large">Rozkład jazdy</ion-title>
         </ion-toolbar>
     </ion-header>
-  <div class="kontent">
+    <div class="kontent">
+        <ion-fab class="strzala" vertical="bottom" horizontal="end" slot="fixed" *ngIf="offsetTop >= 300">
+            <ion-fab-button (click)="scrollToTop()">
+                <ion-icon name="arrow-up"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+        <ion-fab class="strzala" vertical="bottom" horizontal="end" slot="fixed" *ngIf="offsetTop < 300">
+            <ion-fab-button (click)="scrollBottom()">
+                <ion-icon name="arrow-down"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
 
-    <ion-fab class="strzala" vertical="bottom" horizontal="end" slot="fixed" *ngIf="offsetTop >= 300">
-        <ion-fab-button (click)="scrollToTop()">
-            <ion-icon name="arrow-up"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-
-    <ion-fab class="strzala" vertical="bottom" horizontal="end" slot="fixed" *ngIf="offsetTop < 300">
-        <ion-fab-button (click)="scrollBottom()">
-            <ion-icon name="arrow-down"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-    
-
-    <div class="informacje-przystankow" [ngSwitch]="szczegolyRozkladu">
-        <div *ngSwitchCase="'przystanki'">
-            <header class="informacje-przystankow__intro">
-                <h1 class="przystanki-tytul">
-                    Szczegóły linii <strong class="przystanki-tytul__pogrubienie">{{biezacaLinia.route_id}}</strong>
-                </h1>
-                <button class="przystanki__powrot" id="1" (click)="Powrot($event)">Powrót do numerów linii</button>
-            </header>
-            <div class="przystanki">
-                  <div
-                      *ngFor="let przystanek of przystanki0"
-                      [id]="przystanek.stop_id + 0"
-                      class="przystanki__nazwa"
-                      (click)="WyswietlGodzinyOdjazdu($event)"
-                  >
-                      {{przystanek.stop_name}}
-                  </div>
-                  <div
-                      *ngFor="let przystanek of przystanki1"
-                      [id]="przystanek.stop_id + 1"
-                      class="przystanki__nazwa"
-                      (click)="WyswietlGodzinyOdjazdu($event)"
-                  >
-                      {{przystanek.stop_name}}
-              </div>
+        <div class="informacje-przystankow" [ngSwitch]="szczegolyRozkladu">
+            <div *ngSwitchCase="'przystanki'">
+                <header class="informacje-przystankow__intro">
+                    <h1 class="przystanki-tytul">
+                        Szczegóły linii <strong class="przystanki-tytul__pogrubienie">{{biezacaLinia.route_id}}</strong>
+                    </h1>
+                    <button class="przystanki__powrot" id="1" (click)="Powrot($event)">Powrót do numerów linii</button>
+                </header>
+                <div class="przystanki-kierunki">
+                    <!-- Kierunek 1 -->
+                    <section class="przystanki-kierunek" *ngIf="przystanki0.length > 0">
+                        <h2 class="przystanki-kierunek__tytul">Kierunek 1: {{tripA?.trip_headsign || 'Kierunek 1'}}</h2>
+                        <div class="przystanki-lista" role="list">
+                            <div
+                                *ngFor="let przystanek of przystanki0"
+                                [id]="przystanek.stop_id + '0'"
+                                class="przystanki__nazwa"
+                                (click)="WyswietlGodzinyOdjazdu($event)"
+                                role="listitem"
+                            >
+                                {{przystanek.stop_name}}
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Kierunek 2 -->
+                    <section class="przystanki-kierunek" *ngIf="przystanki1.length > 0">
+                        <h2 class="przystanki-kierunek__tytul">Kierunek 1: {{tripB?.trip_headsign || 'Kierunek 2'}}</h2>
+                        <div class="przystanki-lista" role="list">
+                            <div
+                                *ngFor="let przystanek of przystanki1"
+                                [id]="przystanek.stop_id + '1'"
+                                class="przystanki__nazwa"
+                                (click)="WyswietlGodzinyOdjazdu($event)"
+                                role="listitem"
+                            >
+                                {{przystanek.stop_name}}
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-        </div>
 
-        <div class="godziny-odjazdow" *ngSwitchCase="'godzinyOdjazdu'">
-            <div class="przystanki__powrot godziny" id="2" (click)="Powrot($event)">Powrót do przystanków</div>
-            <h1 class="godziny-odjazdow__tytul">Godziny odjazdu z przystanku:<strong>{{biezacyPrzystanek}}</strong></h1>
-            <h2 class="godziny-odjazdow__tytul">Godziny występują w formacie: Godzina i obowiązujące minuty</h2>
-            <div class="godziny-odjazdow__tabela">
+            <div class="godziny-odjazdow" *ngSwitchCase="'godzinyOdjazdu'">
+                <div class="przystanki__powrot godziny" id="2" (click)="Powrot($event)">Powrót do przystanków</div>
+                <h1 class="godziny-odjazdow__tytul">Godziny odjazdu z przystanku: <strong>{{biezacyPrzystanek}}</strong></h1>
+                <h2 class="godziny-odjazdow__tytul">Godziny występują w formacie: Godzina i obowiązujące minuty</h2>
+                <div class="godziny-odjazdow__tabela">
                     <section class="godziny-odjazdow__komorka" *ngFor="let png of podzieloneNaGodziny">
                         <header>
                             <h1 class="godziny-odjazdow__godzina">{{png[0][0]}}h</h1>
                         </header>
                         <h3 class="godziny-odjazdow__minuta" *ngFor="let cell of png">{{cell[1]}}m</h3>
                     </section>
+                </div>
+                <div class="przystanki__powrot godziny" id="2" (click)="Powrot($event)">Powrót do przystanków</div>
             </div>
-            <div class="przystanki__powrot godziny" id="2" (click)="Powrot($event)">Powrót do przystanków</div>
-        </div>
 
-        <div *ngSwitchDefault class="kontent">
-            <div *ngFor="let route of routes" class="numer-linii" (click)="WyswietlPrzystankiDlaLinii(route)">
-                {{route.route_id}}
+            <div *ngSwitchDefault class="kontent">
+                <div *ngFor="let route of routes" class="numer-linii" (click)="WyswietlPrzystankiDlaLinii(route)">
+                    {{route.route_id}}
+                </div>
             </div>
         </div>
-
     </div>
- </div>
 </ion-content>
