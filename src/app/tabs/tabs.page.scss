@@ -1,0 +1,24 @@
+ion-tab-bar{
+  text-align: center;
+}
+
+ion-tab-button{
+  display: inline-block;
+  width: 33%;
+}
+
+ion-label{
+  font-size: .7rem;
+  font-weight: bold;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+ion-tab-button {
+    --color-selected: #c20000;
+    color: #000000;
+  }
+
+ion-icon
+  {
+    font-size: 25px;
+  }

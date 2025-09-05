@@ -1,0 +1,13 @@
+{
+    "/gtfs-dev-proxy/*": {
+        "target": "https://www.zditm.szczecin.pl/rozklady/GTFS/latest/",
+        "changeOrigin": true,
+        "secure": false,
+        "pathRewrite": {
+            "^/gtfs-dev-proxy": ""
+        }
+    }
+    
+
+
+}

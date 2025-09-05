@@ -1,0 +1,10 @@
+{
+  "name": "projekt_zditm",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

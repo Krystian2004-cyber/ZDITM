@@ -1,0 +1,12 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "projekt_zditm",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"proxies": [
+		{
+			"path": "/gtfs-dev-proxy",
+			"proxyUrl": "https://www.zditm.szczecin.pl/rozklady/GTFS/latest/"
+		}
+	]
+}

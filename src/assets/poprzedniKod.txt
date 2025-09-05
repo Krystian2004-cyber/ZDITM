@@ -1,0 +1,43 @@
+ //   const tripA = this.trips.find(t => t.route_id == nameOfRoute && t.direction_id == '0' && t.trip_id.charAt(t.trip_id.length - 1) >2);
+  //   console.log(tripA);
+  //   var sae = tripA.sae_trip_id;
+  //   var przystankiA = this.stop_times.filter(trip => trip.sae_trip_id == sae);
+  //   //console.log(przystankiA);
+
+  //   przystankiA.forEach(p => {
+  //     let przystanek = this.stops.find(s => s.stop_id == p.stop_id);
+  //     // console.log(przystanek.stop_name);
+  //     przystanki0.push(przystanek.stop_name);
+  //   });
+  //   console.log(przystanki0);
+
+
+  //   var przystankiB = [];
+
+  //   var przystanki1 = [];
+  //   const tripB = this.trips.find(t => t.route_id == nameOfRoute && t.direction_id == '1' && t.trip_id.charAt(t.trip_id.length - 1) >2);
+  //   console.log(tripB);
+  //   var sae = tripB.sae_trip_id;
+  //   var przystankiB = this.stop_times.filter(trip => trip.sae_trip_id == sae);
+  //   //console.log(przystankiB);
+
+  //   przystankiB.forEach(p => {
+  //     let przystanek = this.stops.find(s => s.stop_id == p.stop_id);
+  //     //console.log(przystanek.stop_name);
+  //     przystanki1.push(przystanek.stop_name);
+  //   });
+  //  console.log(przystanki1);
+
+
+
+
+
+    // const tripB = this.trips.find(t => t.route_id == linia && t.direction_id == '1');
+    // console.log(tripB);  
+    // const stop_times_l = this.stop_times.filter(st => st.sae_trip_id == trips_l.sae_trip_id);
+    // console.log(stop_times_l); 
+    // const stops_l = this.stops.filter(s => stop_times_l.find(st => st.stop_id == s.stop_id));
+    // console.log(stops_l); 
+
+
+  //}
